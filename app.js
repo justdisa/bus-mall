@@ -2,49 +2,50 @@
 
 //declaring some variables//
 var products = [];
+var displayedProducts = [];
 var shown = 0;
 var clicked = 0;
 
 //building constructor function//
-function CatItem (name) {
+function Product (name) {
   this.name = name;
-  this.imagePath = 'img/' + name + '.jpg'; //doesn't work with png or gif//
+  this.imagePath = 'img/' + name;
   this.shown = shown;
   this.clicked = clicked;
   products.push(this);
 };
 //for loop to choose products//
 for (var i = 0; i < products.length; i++) {
-  var newProd = products[i];
-  newProd = new CatItem(newProd);
+  var newProduct = products[i];
+  newProduct = new Product(newProduct);
 }
 
 //random number creator//
-function randNum () {
-  return Math.floor(Math.random() * (max - min)) + min;
-};
+function random () {
+  return Math.floor(Math.random() * products.length);
+}
 
 //items to evaluate//
-var bag = new CatItem ('bag');
-var banana = new CatItem ('banana');
-var bathroom = new CatItem ('bathroom');
-var boots = new CatItem ('boots');
-var breakfast = new CatItem ('breakfast');
-var bubblegum = new CatItem ('bubblegum');
-var chair = new CatItem ('chair');
-var cthulhu = new CatItem ('cthulhu');
-var dogduck = new CatItem ('dog-duck');
-var dragon = new CatItem ('dragon');
-var pen = new CatItem ('pen');
-var petsweep = new CatItem ('pet-sweep');
-var scissors = new CatItem ('scissors');
-var shark = new CatItem ('shark');
-var sweep = new CatItem ('sweep');
-var tauntaun = new CatItem ('tauntaun');
-var unicorn = new CatItem ('unicorn');
-var usb = new CatItem ('usb');
-var watercan = new CatItem ('water-can');
-var wineglass = new CatItem ('wine-glass');
+var bag = new Product ('bag.jpg');
+var banana = new Product ('banana.jpg');
+var bathroom = new Product ('bathroom.jpg');
+var boots = new Product ('boots.jpg');
+var breakfast = new Product ('breakfast.jpg');
+var bubblegum = new Product ('bubblegum.jpg');
+var chair = new Product ('chair.jpg');
+var cthulhu = new Product ('cthulhu.jpg');
+var dogduck = new Product ('dog-duck.jpg');
+var dragon = new Product ('dragon.jpg');
+var pen = new Product ('pen.jpg');
+var petsweep = new Product ('pet-sweep.jpg');
+var scissors = new Product ('scissors.jpg');
+var shark = new Product ('shark.jpg');
+var sweep = new Product ('sweep.png');
+var tauntaun = new Product ('tauntaun.jpg');
+var unicorn = new Product ('unicorn.jpg');
+var usb = new Product ('usb.gif');
+var watercan = new Product ('water-can.jpg');
+var wineglass = new Product ('wine-glass.jpg');
 
 //random number generator//
 //need to limit it with min and max numbers//

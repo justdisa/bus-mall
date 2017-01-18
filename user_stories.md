@@ -30,7 +30,7 @@
 
   1. Write a constructor to create an object for each photo.
   2. Push the objects into an array.
-  3. Pull three random objects out of array to display.
+  3. Pull three random objects out of products array into display array.
   4. Write listener for clicks.
   5. Record click data.
   6. Push items back into array at end.
