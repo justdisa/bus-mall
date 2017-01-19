@@ -3,27 +3,67 @@
 //declaring some variables//
 var products = [];
 var displayedProducts = [];
-var shown = 0;
-var clicked = 0;
+var clicks = 0;
+var views = 0;
+var left = document.getElementById('left');
+var center = document.getElementById('center');
+var right = document.getElementById('right');
+// var imageNames = ['bag.jpg', 'banana.jpg', 'bathroom.jpg', 'boots.jpg', 'breakfast.jpg', 'bubblegum.jpg', 'chair.jpg', 'cthulhu.jpg', 'dog-duck.jpg', 'dragon.jpg', 'pen.jpg', 'pet-sweep.jpg', 'scissors.jpg', 'shark.jpg', 'sweep.png', 'tauntaun.jpg', 'unicorn.jpg', 'usb.gif', 'water-can.jpg', 'wine-glass.jpg'];
 
 //building constructor function//
 function Product (name) {
   this.name = name;
-  this.imagePath = 'img/' + name;
-  this.shown = shown;
-  this.clicked = clicked;
-  products.push(this);
+  this.imagePath = './img/' + name;
+  this.views = views;
+  this.clicks = clicks;
+  products.push(this); //pushing into products array//
 };
-//for loop to choose products//
-for (var i = 0; i < products.length; i++) {
-  var newProduct = products[i];
-  newProduct = new Product(newProduct);
-}
 
 //random number creator//
-function random () {
+function randNum () {
   return Math.floor(Math.random() * products.length);
 }
+//function to choose products//
+function displayProduct () {
+  function displayLeft () {
+    var leftIndex = randNum();
+    if (leftIndex === displayedProducts[0] || leftIndex === displayedProducts[1] || leftIndex || displayedProducts[2]) {
+      displayLeft();
+    }//for left image//
+    else {var leftProduct = products[leftIndex];
+      left.src = leftProduct.imagePath;
+      left.alt = leftProduct.name;
+      leftProduct.views += 1;
+    }
+  }
+  function displayCenter () {
+    var centerIndex = randNum(); //for center image//
+    if (centerIndex === displayedProducts[0] || centerIndex === displayedProducts[1] || centerIndex === displayedProducts [2] || centerIndex === leftIndex) {
+      displayCenter();
+    }
+    else {var centerProduct = products[centerIndex];
+      center.src = centerProduct.imagePath;
+      center.alt = centerProduct.name;
+      centerProduct.views += 1;
+    }
+  }
+
+  function displayRight() {
+    var rightIndex = randNum();
+    if (rightIndex === displayedProducts[0] || rightIndex === displayedProducts[1] || rightIndex === displayedProducts[2] || rightIndex === centerIndex || rightIndex === leftIndex) {
+      displayRight();
+    }
+    else { //for right image//
+      var rightProduct = products[rightIndex];
+      right.src = rightProduct.imagePath;
+      right.alt = rightProduct.name;
+      rightProduct.views += 1;
+    }
+  }
+  displayedProducts = [leftIndex, centerIndex, rightIndex];
+};
+
+//in here is where I need my listener//
 
 //items to evaluate//
 var bag = new Product ('bag.jpg');
@@ -47,6 +87,7 @@ var usb = new Product ('usb.gif');
 var watercan = new Product ('water-can.jpg');
 var wineglass = new Product ('wine-glass.jpg');
 
+displayProduct();
 //random number generator//
 //need to limit it with min and max numbers//
 //accessing path name with doc path//

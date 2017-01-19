@@ -1,4 +1,44 @@
+
 body {
   background-color: #191970;
   color: #F5F5F5;
+  padding: 0;
+  margin: 0;
+}
+
+#container {
+  margin: auto;
+  height: auto;
+  width: auto;
+
+}
+
+#left {
+  border: 5px solid #191970;
+  float: left;
+  display: block;
+  max-height: 250px;
+  max-width: 320px;
+  width: auto;
+  height:auto;
+}
+
+#center {
+  border: 5px solid #191970;
+  float: left;
+  display: block;
+  max-height: 250px;
+  max-width: 320px;
+  width: auto;
+  height:auto;
+}
+
+#right {
+  border: 5px solid #191970;
+  float: left;
+  display: block;
+  max-height: 250px;
+  max-width: 320px;
+  width: auto;
+  height:auto;
 }
