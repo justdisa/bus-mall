@@ -27,30 +27,37 @@ function randNum () {
 function displayProduct () {
   function displayLeft () {
     var leftIndex = randNum();
-    if (leftIndex === displayedProducts[0] || leftIndex === displayedProducts[1] || leftIndex || displayedProducts[2]) {
+    console.log(leftIndex);
+    if (leftIndex === displayedProducts[0] || leftIndex === displayedProducts[1] || leftIndex === displayedProducts[2]) {
+      console.log(displayedProducts);
       displayLeft();
     }//for left image//
-    else {var leftProduct = products[leftIndex];
+    else {
+      var leftProduct = products[leftIndex];
+      console.log(leftProduct);
       left.src = leftProduct.imagePath;
       left.alt = leftProduct.name;
       leftProduct.views += 1;
+      displayedProducts[0] = leftIndex;
     }
   }
+  displayLeft();
   function displayCenter () {
     var centerIndex = randNum(); //for center image//
-    if (centerIndex === displayedProducts[0] || centerIndex === displayedProducts[1] || centerIndex === displayedProducts [2] || centerIndex === leftIndex) {
+    if (centerIndex === displayedProducts[0] || centerIndex === displayedProducts[1] || centerIndex === displayedProducts [2]) {
       displayCenter();
     }
     else {var centerProduct = products[centerIndex];
       center.src = centerProduct.imagePath;
       center.alt = centerProduct.name;
       centerProduct.views += 1;
+      displayedProducts[1] = centerIndex;
     }
   }
-
+  displayCenter();
   function displayRight() {
     var rightIndex = randNum();
-    if (rightIndex === displayedProducts[0] || rightIndex === displayedProducts[1] || rightIndex === displayedProducts[2] || rightIndex === centerIndex || rightIndex === leftIndex) {
+    if (rightIndex === displayedProducts[0] || rightIndex === displayedProducts[1] || rightIndex === displayedProducts[2]) {
       displayRight();
     }
     else { //for right image//
@@ -58,9 +65,10 @@ function displayProduct () {
       right.src = rightProduct.imagePath;
       right.alt = rightProduct.name;
       rightProduct.views += 1;
+      displayedProducts[2] = rightIndex;
     }
   }
-  displayedProducts = [leftIndex, centerIndex, rightIndex];
+  displayRight();
 };
 
 //in here is where I need my listener//
