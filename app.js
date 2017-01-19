@@ -5,6 +5,7 @@ var products = [];
 var displayedProducts = [];
 var clicks = 0;
 var views = 0;
+var totalClicks = 0;
 var left = document.getElementById('left');
 var center = document.getElementById('center');
 var right = document.getElementById('right');
@@ -94,26 +95,19 @@ var wineglass = new Product ('wine-glass.jpg');
 
 //in here is where I need my listener//
 var startButton = document.getElementById('startButton');
-startButton.addEventListener('click', startPlaying);
+startButton.addEventListener('click', playGame);
 
 // displayProduct();
 
-function startPlaying() {
+function playGame(){
+  left.addEventListener('click', function(){displayProduct(); totalClicks += 1;});
+  center.addEventListener('click', function(){displayProduct(); totalClicks += 1;});
+  right.addEventListener('click', function(){displayProduct(); totalClicks += 1;});
   displayProduct();
-  var left = document.getElementById('left');
-  left.addEventListener('click', displayProduct);
-
-  var center = document.getElementById('center');
-  center.addEventListener('click', displayProduct);
-
-  var right = document.getElementById('right');
-  right.addEventListener('click', displayProduct);
-};
-
-  // for(i = 0; i < 25; i++) {
-
-  // }
-// }
+}
+console.log(totalClicks);
+    //it looks right. :) you might want your event listeners inside the do too, I think so
+ //do I want to add the listeners again and again?
 
 //random number generator//
 //need to limit it with min and max numbers//
