@@ -8,7 +8,6 @@ var views = 0;
 var left = document.getElementById('left');
 var center = document.getElementById('center');
 var right = document.getElementById('right');
-// var imageNames = ['bag.jpg', 'banana.jpg', 'bathroom.jpg', 'boots.jpg', 'breakfast.jpg', 'bubblegum.jpg', 'chair.jpg', 'cthulhu.jpg', 'dog-duck.jpg', 'dragon.jpg', 'pen.jpg', 'pet-sweep.jpg', 'scissors.jpg', 'shark.jpg', 'sweep.png', 'tauntaun.jpg', 'unicorn.jpg', 'usb.gif', 'water-can.jpg', 'wine-glass.jpg'];
 
 //building constructor function//
 function Product (name) {
@@ -71,8 +70,6 @@ function displayProduct () {
   displayRight();
 };
 
-//in here is where I need my listener//
-
 //items to evaluate//
 var bag = new Product ('bag.jpg');
 var banana = new Product ('banana.jpg');
@@ -95,7 +92,29 @@ var usb = new Product ('usb.gif');
 var watercan = new Product ('water-can.jpg');
 var wineglass = new Product ('wine-glass.jpg');
 
-displayProduct();
+//in here is where I need my listener//
+var startButton = document.getElementById('startButton');
+startButton.addEventListener('click', startPlaying);
+
+// displayProduct();
+
+function startPlaying() {
+  displayProduct();
+  var left = document.getElementById('left');
+  left.addEventListener('click', displayProduct);
+
+  var center = document.getElementById('center');
+  center.addEventListener('click', displayProduct);
+
+  var right = document.getElementById('right');
+  right.addEventListener('click', displayProduct);
+};
+
+  // for(i = 0; i < 25; i++) {
+
+  // }
+// }
+
 //random number generator//
 //need to limit it with min and max numbers//
 //accessing path name with doc path//

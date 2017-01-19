@@ -6,11 +6,28 @@
     <link rel="stylesheet" type="text/css" href="styles.css" />
   </head>
   <body>
+    <section id="header">
+      <div id="intro">
+          <h1>Preference Test</h1>
+          <p>Instructions: You will be shown three images at a time. Click the product that most appeals to you. Click start to begin.</p>
+      </div>
+      <button id="startButton">START</button>
+    </section>
+      <div id="runningCounter" class="hidden">
+        <span id="runningTotal"></span>
+        <span id="runningCount"></span>
+      </div>
+
+    </section>
     <section id="container">
       <img id="left">
       <img id="center">
       <img id="right">
     </section>
+    <div class="chartjs">
+      <canvas id="canvas1"></canvas>
+
+    </div>
     <script src="app.js"></script>
   </body>
 </html>

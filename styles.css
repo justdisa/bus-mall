@@ -2,12 +2,32 @@
 body {
   background-color: #191970;
   color: #F5F5F5;
-  padding: 0;
+  font-family: Arial;
+  padding: 5px;
   margin: 0;
 }
 
+h1 {
+  text-align: left;
+  font-family: Verdana;
+}
+
+#header {
+  text-align: justify;
+  height: auto;
+  width: auto;
+}
+
+#intro {
+    height: 120px;
+    width: 100%;
+}
+
+#startbutton {
+  color: red;
+}
+
 #container {
-  margin: auto;
   height: auto;
   width: auto;
 
@@ -17,7 +37,7 @@ body {
   border: 5px solid #191970;
   float: left;
   display: block;
-  max-height: 250px;
+  max-height: 300px;
   max-width: 320px;
   width: auto;
   height:auto;
@@ -27,7 +47,7 @@ body {
   border: 5px solid #191970;
   float: left;
   display: block;
-  max-height: 250px;
+  max-height: 300px;
   max-width: 320px;
   width: auto;
   height:auto;
@@ -37,8 +57,13 @@ body {
   border: 5px solid #191970;
   float: left;
   display: block;
-  max-height: 250px;
+  max-height: 300px;
   max-width: 320px;
   width: auto;
   height:auto;
+}
+
+#canvas1 {
+  max-height: 320px;
+  width: auto;
 }
