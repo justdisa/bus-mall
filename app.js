@@ -18,7 +18,7 @@ function Product (name) {
   this.clicks = clicks;
   products.push(this); //pushing into products array//
 }
-// console.log('break one');
+
 //random number creator//
 function randNum () {
   return Math.floor(Math.random() * products.length);
@@ -27,22 +27,17 @@ function randNum () {
 function displayProduct () {
   function displayLeft () {
     var leftIndex = randNum();
-    // console.log(leftIndex);
     if (leftIndex === displayedProducts[0] || leftIndex === displayedProducts[1] || leftIndex === displayedProducts[2]) {
-      // console.log(displayedProducts);
       displayLeft();
     }//for left image//
     else {
       var leftProduct = products[leftIndex];
-      // console.log(leftProduct);
       left.src = leftProduct.imagePath;
       left.alt = leftProduct.name;
       leftProduct.views += 1;
       displayedProducts[0] = leftIndex;
     }
   }
-
-  // console.log('break two');
 
   displayLeft();
   function displayCenter () {
@@ -57,8 +52,6 @@ function displayProduct () {
       displayedProducts[1] = centerIndex;
     }
   }
-
-  // console.log('break three');
 
   displayCenter();
   function displayRight() {
@@ -75,8 +68,6 @@ function displayProduct () {
     }
   }
   displayRight();
-  // totalClicks++;
-  console.log(totalClicks);
 }
 
 //items to evaluate//
@@ -104,11 +95,12 @@ var wineglass = new Product ('wine-glass.jpg');
 //in here is where I need my listener//
 var startButton = document.getElementById('startButton');
 startButton.addEventListener('click', playGame);
-// console.log('after start');
+
 // displayProduct();
-function clickyClick() {
+function clickyClick(event) {
   if(totalClicks < 25) {
     totalClicks += 1;
+    (products[displayedProducts[0]]).clicks++;
     displayProduct();
   }
   else{
@@ -116,21 +108,11 @@ function clickyClick() {
     left.removeEventListener('click', clickyClick);
     center.removeEventListener('click', clickyClick);
     right.removeEventListener('click', clickyClick);
-    // console.log('blah blah blah');
   }
 }
-// console.log('after clickyClick');
 function playGame(){
   displayProduct();
   left.addEventListener('click', clickyClick);
   center.addEventListener('click', clickyClick);
   right.addEventListener('click', clickyClick);
 }
-// console.log(totalClicks);
-    //it looks right. :) you might want your event listeners inside the do too, I think so
- //do I want to add the listeners again and again?
-
-//random number generator//
-//need to limit it with min and max numbers//
-//accessing path name with doc path//
-//pushing it to array//
