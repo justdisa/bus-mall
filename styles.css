@@ -1,6 +1,11 @@
 
 body {
-  background-color: #191970;
+  background-color: black;
+  background: url("./img/tileable-light-blurs-and-abstract-circles-18.png") no-repeat center center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   color: #F5F5F5;
   font-family: Arial;
   padding: 5px;
@@ -34,15 +39,14 @@ h1 {
   height: auto;
   width: 80vw;
   margin: auto;
-  border: 5px solid #191970;
 }
 
 #left, #center, #right {
-  border: 5px solid #191970;
   border-radius: 3vw;
+  margin: .5vw;
   float: left;
   display: block;
-  max-width: 25vw;
+  max-width: 24vw;
   max-height: 30vw;
   height:auto;
 }
@@ -50,4 +54,9 @@ h1 {
 #canvas1 {
   max-height: 320px;
   width: auto;
+}
+
+#list-text {
+  float: left;
+  width: 80vw;
 }

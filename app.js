@@ -25,11 +25,11 @@ function randNum () {
 }
 //function to choose products//
 function displayProduct () {
-  function displayLeft () {
+  function displayLeft () {//start of displayLeft//
     var leftIndex = randNum();
     if (leftIndex === displayedProducts[0] || leftIndex === displayedProducts[1] || leftIndex === displayedProducts[2]) {
       displayLeft();
-    }//for left image//
+    }
     else {
       var leftProduct = products[leftIndex];
       left.src = leftProduct.imagePath;
@@ -37,11 +37,10 @@ function displayProduct () {
       leftProduct.views += 1;
       displayedProducts[0] = leftIndex;
     }
-  }
-
-  displayLeft();
-  function displayCenter () {
-    var centerIndex = randNum(); //for center image//
+  }//end of displayLeft//
+  displayLeft(); //call displayLeft//
+  function displayCenter () {//start of displayCenter//
+    var centerIndex = randNum();
     if (centerIndex === displayedProducts[0] || centerIndex === displayedProducts[1] || centerIndex === displayedProducts [2]) {
       displayCenter();
     }
@@ -51,23 +50,22 @@ function displayProduct () {
       centerProduct.views += 1;
       displayedProducts[1] = centerIndex;
     }
-  }
-
-  displayCenter();
-  function displayRight() {
+  }//end of displayCenter//
+  displayCenter();//call displayCenter//
+  function displayRight() {//start of displayRight//
     var rightIndex = randNum();
     if (rightIndex === displayedProducts[0] || rightIndex === displayedProducts[1] || rightIndex === displayedProducts[2]) {
       displayRight();
     }
-    else { //for right image//
+    else {
       var rightProduct = products[rightIndex];
       right.src = rightProduct.imagePath;
       right.alt = rightProduct.name;
       rightProduct.views += 1;
       displayedProducts[2] = rightIndex;
     }
-  }
-  displayRight();
+  }//end of displayRight//
+  displayRight();//call displayRight//
 }
 
 //items to evaluate//
@@ -92,15 +90,22 @@ var usb = new Product ('usb.gif');
 var watercan = new Product ('water-can.jpg');
 var wineglass = new Product ('wine-glass.jpg');
 
-//in here is where I need my listener//
+//here is my listener//
 var startButton = document.getElementById('startButton');
 startButton.addEventListener('click', playGame);
 
-// displayProduct();
 function clickyClick(event) {
   if(totalClicks < 25) {
     totalClicks += 1;
-    (products[displayedProducts[0]]).clicks++;
+    if(event.target.id == 'left') {
+      (products[displayedProducts[0]]).clicks++;
+    }
+    else if (event.target.id == 'center') {
+      (products[displayedProducts[1]]).clicks++;
+    }
+    else{
+      (products[displayedProducts[2]]).clicks++;
+    }
     displayProduct();
   }
   else{
@@ -108,6 +113,15 @@ function clickyClick(event) {
     left.removeEventListener('click', clickyClick);
     center.removeEventListener('click', clickyClick);
     right.removeEventListener('click', clickyClick);
+    function makeList(){
+      var list = document.getElementById('product-clicks');
+      for(var i = 0; i < products.length; i++) {
+        var item = document.createElement('li');
+        item.textContent = 'The image ' + products[i].name + ' was selected ' + products[i].clicks + ' times.';
+        list.appendChild(item);
+      }
+    }
+    makeList();
   }
 }
 function playGame(){
