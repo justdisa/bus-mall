@@ -18,6 +18,12 @@ function Product (name) {
   this.clicks = clicks;
   products.push(this); //pushing into products array//
 }
+function storeLocal(){
+  for (var i = 0; i < products.length; i++){
+    new Product(products[i], 'img/' + products[i]);
+  }
+  localStorage.setItem('products',JSON.stringify(products));
+};
 
 //random number creator//
 function randNum () {
@@ -89,6 +95,27 @@ var unicorn = new Product ('unicorn.jpg');
 var usb = new Product ('usb.gif');
 var watercan = new Product ('water-can.jpg');
 var wineglass = new Product ('wine-glass.jpg');
+//////////////////////////////////////////////////////////////////////
+if (localStorage.clicks && localStorage.products){
+  allProducts = JSON.parse(localStorage.getItem('products'));
+  data = JSON.parse(localStorage.getItem('data'));
+} else {
+  data = {
+    labels: [],
+    datasets: [     //this code does not work, but it's in here//
+      {
+        label: '',
+        fillColor: '',
+        strokeColor: '',
+        highlightFill: '',
+        highlightStroke: '',
+        data: []
+      }
+    ]
+  };
+  storeLocal();
+};
+/////////////////////////////////////////////////////////////////////
 
 //here is my listener//
 var startButton = document.getElementById('startButton');
@@ -107,6 +134,8 @@ function clickyClick(event) {
       (products[displayedProducts[2]]).clicks++;
     }
     displayProduct();
+    localStorage.setItem('products',JSON.stringify(products));
+    localStorage.setItem('clicks',JSON.stringify(clicks));
   }
   else{
     startButton.removeEventListener('click', playGame);
@@ -130,3 +159,31 @@ function playGame(){
   center.addEventListener('click', clickyClick);
   right.addEventListener('click', clickyClick);
 }
+
+var context = document.getElementById('canvas1').getContext('2d');
+
+var chartData = [100, 200, 300, 50, 10];
+var chartColors = ['blue', 'red', 'yellow', 'orange', 'green'];
+var chartLabels = ['Build', 'yourself', 'a', ''];
+var chartOptions = {
+  scales: {
+    yAxes: [{
+      ticks: {
+        beginAtZero: true
+      }
+    }]
+  }
+};
+
+var myFirstChart = new Chart(context, {//this is where we'll build out the chart
+  type: 'bar',
+  data: {
+    labels: chartColors,
+    datasets: [{
+      label: '# of votes for each color',
+      data: chartData,
+      backgroundColor: chartColors
+    }]
+  },
+  options: chartOptions
+});
