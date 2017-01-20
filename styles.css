@@ -15,51 +15,35 @@ h1 {
 #header {
   text-align: justify;
   height: auto;
-  width: auto;
+  width: 80vw;
+  margin: auto;
 }
 
 #intro {
-    height: 120px;
-    width: 100%;
+  height: 8vw;
+  width: 80vw;
+  font-size: 1.4vw;
+
 }
 
-#startbutton {
-  color: red;
+#startButton {
+
 }
 
 #container {
   height: auto;
-  width: auto;
-
+  width: 80vw;
+  margin: auto;
+  border: 5px solid #191970;
 }
 
-#left {
+#left, #center, #right {
   border: 5px solid #191970;
+  border-radius: 3vw;
   float: left;
   display: block;
-  max-height: 300px;
-  max-width: 320px;
-  width: auto;
-  height:auto;
-}
-
-#center {
-  border: 5px solid #191970;
-  float: left;
-  display: block;
-  max-height: 300px;
-  max-width: 320px;
-  width: auto;
-  height:auto;
-}
-
-#right {
-  border: 5px solid #191970;
-  float: left;
-  display: block;
-  max-height: 300px;
-  max-width: 320px;
-  width: auto;
+  max-width: 25vw;
+  max-height: 30vw;
   height:auto;
 }
 
