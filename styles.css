@@ -30,20 +30,21 @@ chart {
 }
 
 #intro {
-  height: 8vw;
+  height: 9vw;
   width: 80vw;
   font-size: 1.4vw;
 
 }
 
 #startButton {
+  position: relative;
+  align-self: center;
 
 }
 
 #container {
   height: auto;
-  width: 80vw;
-  margin: auto;
+  width: auto;
 }
 
 #left, #center, #right {
@@ -51,9 +52,8 @@ chart {
   margin: .5vw;
   float: left;
   display: block;
-  max-width: 24vw;
-  max-height: 30vw;
-  height:auto;
+  width: auto;
+  height: 18vw;
 }
 
 #canvas1 {

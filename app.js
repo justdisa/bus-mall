@@ -96,25 +96,25 @@ var usb = new Product ('usb.gif');
 var watercan = new Product ('water-can.jpg');
 var wineglass = new Product ('wine-glass.jpg');
 //////////////////////////////////////////////////////////////////////
-if (localStorage.clicks && localStorage.products){
-  allProducts = JSON.parse(localStorage.getItem('products'));
-  data = JSON.parse(localStorage.getItem('data'));
-} else {
-  data = {
-    labels: [],
-    datasets: [     //this code does not work, but it's in here//
-      {
-        label: '',
-        fillColor: '',
-        strokeColor: '',
-        highlightFill: '',
-        highlightStroke: '',
-        data: []
-      }
-    ]
-  };
-  storeLocal();
-};
+// if (localStorage.clicks && localStorage.products){
+//   allProducts = JSON.parse(localStorage.getItem('products'));
+//   data = JSON.parse(localStorage.getItem('data'));
+// } else {
+//   data = {
+//     labels: [],
+//     datasets: [     //this code does not work, but it's in here//
+//       {
+//         label: '',
+//         fillColor: '',
+//         strokeColor: '',
+//         highlightFill: '',
+//         highlightStroke: '',
+//         data: []
+//       }
+//     ]
+//   };
+//   storeLocal();
+// };
 /////////////////////////////////////////////////////////////////////
 
 //here is my listener//
