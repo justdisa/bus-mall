@@ -95,7 +95,7 @@ var startButton = document.getElementById('startButton');
 startButton.addEventListener('click', playGame);
 
 function clickyClick(event) {
-  if(totalClicks < 25) {
+  if(totalClicks < 24) {
     totalClicks += 1;
     if(event.target.id == 'left') {
       (products[displayedProducts[0]]).clicks++;
@@ -108,7 +108,16 @@ function clickyClick(event) {
     }
     displayProduct();
   }
-  else{
+  else if (totalClicks = 24) {
+    if(event.target.id == 'left') {
+      (products[displayedProducts[0]]).clicks++;
+    }
+    else if (event.target.id == 'center') {
+      (products[displayedProducts[1]]).clicks++;
+    }
+    else{
+      (products[displayedProducts[2]]).clicks++;
+    }
     startButton.removeEventListener('click', playGame);
     left.removeEventListener('click', clickyClick);
     center.removeEventListener('click', clickyClick);
