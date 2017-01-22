@@ -160,9 +160,9 @@ function clickyClick(event) {
     console.log(clicksData);
     // makeList();
     // makeChart();
-    //find the chart in HTML//
+    //Getting the chart from HTML--I wanted to wrap this in a function, but every time I tried, I broke something.//
     var context = document.getElementById('market-chart').getContext('2d');
-
+    //chart options--there are so many of these.
     var chartOptions = {
       scales: {
         xAxes:[{
