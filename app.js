@@ -169,9 +169,12 @@ function clickyClick(event) {
     var context = document.getElementById('market-chart').getContext('2d');
     //chart options--there are so many of these.
     var chartOptions = {
+      legend: {labels:{fontColor: 'whitesmoke', fontSize: 14}},
       scales: {
         xAxes:[{
           ticks: {
+            fontColor: 'whitesmoke',
+            fontSize: 12,
             stacked: false,
             minRotation: 90,
             maxRotation: 90,
@@ -179,8 +182,10 @@ function clickyClick(event) {
         }],
         yAxes: [{
           ticks: {
+            fontColor: 'whitesmoke',
+            fontSize: 12,
             beginAtZero: true,
-            stepSize: 2
+            stepSize: 5
           }
         }]
       }
