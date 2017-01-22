@@ -19,12 +19,6 @@ function Product (name, nickname) {
   this.clicks = clicks;
   products.push(this); //pushing into products array//
 }
-function storeLocal(){
-  for (var i = 0; i < products.length; i++){
-    new Product(products[i], 'img/' + products[i]);
-  }
-  localStorage.setItem('products',JSON.stringify(products));
-};
 
 //random number creator//
 function randNum () {
@@ -114,8 +108,6 @@ function clickyClick(event) {
       (products[displayedProducts[2]]).clicks++;
     }
     displayProduct();
-    localStorage.setItem('products',JSON.stringify(products));
-    localStorage.setItem('clicks',JSON.stringify(clicks));
   }
   else if (totalClicks = 24) {
     if(event.target.id == 'left') {
@@ -166,6 +158,15 @@ function clickyClick(event) {
     }
     makeClicksData();
     console.log(clicksData);
+
+    function saveToLocal(){
+      var chartLabelsString = JSON.stringify(chartLabels);
+      localStorage.setItem('chartLabels', chartLabelsString);
+      var viewsDataString = JSON.stringify(viewsData);
+      localStorage.setItem('viewsData', viewsDataString);
+      var clicksDataString = JSON.stringify(clicksData);
+      localStorage.setItem('clicksData', clicksDataString);
+    }
     // makeList();
     // makeChart();
     //Getting the chart from HTML--I wanted to wrap this in a function, but every time I tried, I broke something.//
@@ -217,21 +218,4 @@ function playGame(){
   left.addEventListener('click', clickyClick);
   center.addEventListener('click', clickyClick);
   right.addEventListener('click', clickyClick);
-}
-
-//here are some chart variables//
-
-//the functions that make the chart variables//
-function makeChartVars() {
-  // function makeChartLabels(products){
-  //   for(var i = 0; i < products.length; i++) {
-  //     chartLabels.push(products[i]['nickname']);
-  //   }
-  // }
-  // function makeViewsData(){
-  //   for(var i = 0; i < products.length; i++) {
-  //     viewsData.push(products[i]['views']);
-  //   }
-  // }
-
 }
