@@ -17,9 +17,12 @@ h1 {
   font-family: Verdana;
 }
 
-chart {
-  width: 80vw;
+#chartjs {
+  color: #F5F5F5;
+  background-color: indigo;
+  width: auto;
   height: auto;
+  margin: 0;
 }
 
 #header {
@@ -30,7 +33,7 @@ chart {
 }
 
 #intro {
-  height: 9vw;
+  height: 6vw;
   width: 80vw;
 }
 
@@ -59,12 +62,18 @@ chart {
 }
 
 #left {
-  margin-left: 9vw;
+  margin-left: 8vw;
 }
 
-#canvas1 {
-  max-height: 320px;
+#market-chart {
+  /*background-color: indigo;*/
+  max-height: 25vw;
+  max-width: 80vw;
+  height: auto;
   width: auto;
+  color: #F5F5F5;
+  margin-left: 9vw;
+  margin-top: 2vw;
 }
 
 #list-text {
