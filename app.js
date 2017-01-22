@@ -138,10 +138,9 @@ function clickyClick(event) {
 
     function makeChartVars(){
       for(var i = 0; i < products.length; i++){
-        chartLabels.push(products[i].nickname);
         viewsData.push(products[i].views);
         clicksData.push(products[i].clicks);
-    // clicksDataFromLocalStorage[i] += products[i]['clicks'] **Selena**
+        chartLabels.push(products[i].nickname + ' ' + ((products[i].clicks / products[i].views) * 100).toFixed(2) + '\%');
       }
     }
     if (localStorage.viewsData) {
@@ -170,19 +169,23 @@ function clickyClick(event) {
     var context = document.getElementById('market-chart').getContext('2d');
     //chart options--there are so many of these.
     var chartOptions = {
+      legend: {labels:{fontColor: 'whitesmoke', fontSize: 14}},
       scales: {
         xAxes:[{
           ticks: {
+            fontColor: 'whitesmoke',
+            fontSize: 12,
             stacked: false,
-            autoskip: false,
             minRotation: 90,
             maxRotation: 90,
           }
         }],
         yAxes: [{
           ticks: {
+            fontColor: 'whitesmoke',
+            fontSize: 12,
             beginAtZero: true,
-            stepSize: 1
+            stepSize: 5
           }
         }]
       }
