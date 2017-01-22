@@ -69,10 +69,8 @@ h1 {
 
 #market-chart {
   /*background-color: indigo;*/
-  max-height: 25vw;
-  max-width: 80vw;
+  width: 80vw;
   height: auto;
-  width: auto;
   color: #F5F5F5;
   margin-left: 9vw;
   margin-top: 2vw;
