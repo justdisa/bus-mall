@@ -133,31 +133,37 @@ function clickyClick(event) {
     // }
     var chartColors = ['violet', 'purple'];
     var chartLabels = [];
-    function makeChartLabels() {
+    var viewsData = [];
+    var clicksData = [];
+
+    function makeChartVars(){
       for(var i = 0; i < products.length; i++){
         chartLabels.push(products[i].nickname);
-      }
-    }
-    makeChartLabels();
-    console.log(chartLabels);
-
-    var viewsData = [];
-    function makeViewsData(){
-      for(var i = 0; i < products.length; i++){
         viewsData.push(products[i].views);
+        clicksData.push(products[i].clicks);
+    // clicksDataFromLocalStorage[i] += products[i]['clicks'] **Selena**
       }
     }
-    makeViewsData();
+    if (localStorage.viewsData) {
+      var viewsDataLoc = JSON.parse(localStorage.viewsData);
+      var clicksDataLoc = JSON.parse(localStorage.clicksData);
+      for(var i = 0; i < products.length; i++){
+        products[i].views += viewsDataLoc[i];
+        products[i].clicks += clicksDataLoc[i];
+      }
+    }
+    makeChartVars();
+    console.log(chartLabels);
     console.log(viewsData);
-
-    var clicksData = [];
-    function makeClicksData(){
-      for(var i = 0; i < products.length; i++) {
-        clicksData.push(products[i]['clicks']);
-      }
-    }
-    makeClicksData();
     console.log(clicksData);
+
+    function saveToLocal(){
+      var viewsDataString = JSON.stringify(viewsData);
+      localStorage.setItem('viewsData', viewsDataString);
+      var clicksDataString = JSON.stringify(clicksData);
+      localStorage.setItem('clicksData', clicksDataString);
+    }
+    saveToLocal();//remember to call this function//
     // makeList();
     // makeChart();
     //Getting the chart from HTML--I wanted to wrap this in a function, but every time I tried, I broke something.//
@@ -176,8 +182,6 @@ function clickyClick(event) {
         yAxes: [{
           ticks: {
             beginAtZero: true,
-            min: 0,
-            max: 10,
             stepSize: 1
           }
         }]
@@ -209,21 +213,4 @@ function playGame(){
   left.addEventListener('click', clickyClick);
   center.addEventListener('click', clickyClick);
   right.addEventListener('click', clickyClick);
-}
-
-//here are some chart variables//
-
-//the functions that make the chart variables//
-function makeChartVars() {
-  // function makeChartLabels(products){
-  //   for(var i = 0; i < products.length; i++) {
-  //     chartLabels.push(products[i]['nickname']);
-  //   }
-  // }
-  // function makeViewsData(){
-  //   for(var i = 0; i < products.length; i++) {
-  //     viewsData.push(products[i]['views']);
-  //   }
-  // }
-
 }
