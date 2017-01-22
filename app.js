@@ -138,10 +138,9 @@ function clickyClick(event) {
 
     function makeChartVars(){
       for(var i = 0; i < products.length; i++){
-        chartLabels.push(products[i].nickname);
         viewsData.push(products[i].views);
         clicksData.push(products[i].clicks);
-    // clicksDataFromLocalStorage[i] += products[i]['clicks'] **Selena**
+        chartLabels.push(products[i].nickname + ' ' + ((products[i].clicks / products[i].views) * 100).toFixed(2) + '\%');
       }
     }
     if (localStorage.viewsData) {
@@ -174,7 +173,6 @@ function clickyClick(event) {
         xAxes:[{
           ticks: {
             stacked: false,
-            autoskip: false,
             minRotation: 90,
             maxRotation: 90,
           }
@@ -182,7 +180,7 @@ function clickyClick(event) {
         yAxes: [{
           ticks: {
             beginAtZero: true,
-            stepSize: 1
+            stepSize: 2
           }
         }]
       }
