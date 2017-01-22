@@ -3,29 +3,30 @@
   <head>
     <meta charset="utf-8">
     <title>Bus Mall</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
   </head>
   <body>
     <section id="header">
       <div id="intro">
-          <h1>Preference Test</h1>
-          <p>Instructions: You will be shown three images at a time. Click the product that most appeals to you. Click start to begin.</p>
+          <h1>Bus Mall Marketing Research</h1>
+          <p>Instructions: You will be shown three images at a time. Click the product you would be most likely to purchase. Click start to begin.</p>
       </div>
+
       <button id="startButton">START</button>
+    </section>
     <section id="container">
       <img id="left">
       <img id="center">
       <img id="right">
     </section>
-    <div id="list-text">
+    <!-- <div id="list-text">
       <ul id="product-clicks">
-
       </ul>
-
-    </div>
+    </div> -->
     <div class="chartjs">
-      <canvas id="canvas1"></canvas>
-
+      <canvas id="market-chart">Preference Test Results</canvas>
     </div>
     <script src="app.js"></script>
   </body>

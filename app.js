@@ -11,8 +11,9 @@ var center = document.getElementById('center');
 var right = document.getElementById('right');
 
 //building constructor function//
-function Product (name) {
+function Product (name, nickname) {
   this.name = name;
+  this.nickname = nickname;
   this.imagePath = './img/' + name;
   this.views = views;
   this.clicks = clicks;
@@ -69,33 +70,33 @@ function displayProduct () {
 }
 
 //items to evaluate//
-var bag = new Product ('bag.jpg');
-var banana = new Product ('banana.jpg');
-var bathroom = new Product ('bathroom.jpg');
-var boots = new Product ('boots.jpg');
-var breakfast = new Product ('breakfast.jpg');
-var bubblegum = new Product ('bubblegum.jpg');
-var chair = new Product ('chair.jpg');
-var cthulhu = new Product ('cthulhu.jpg');
-var dogduck = new Product ('dog-duck.jpg');
-var dragon = new Product ('dragon.jpg');
-var pen = new Product ('pen.jpg');
-var petsweep = new Product ('pet-sweep.jpg');
-var scissors = new Product ('scissors.jpg');
-var shark = new Product ('shark.jpg');
-var sweep = new Product ('sweep.png');
-var tauntaun = new Product ('tauntaun.jpg');
-var unicorn = new Product ('unicorn.jpg');
-var usb = new Product ('usb.gif');
-var watercan = new Product ('water-can.jpg');
-var wineglass = new Product ('wine-glass.jpg');
+var bag = new Product ('bag.jpg', 'R2D2 Rolling Suitcase');
+var banana = new Product ('banana.jpg', 'Banana Slicer');
+var bathroom = new Product ('bathroom.jpg', 'Bathroom Reader');
+var boots = new Product ('boots.jpg', 'Open Toe Galoshes');
+var breakfast = new Product ('breakfast.jpg', 'One-Step Breakfast Maker');
+var bubblegum = new Product ('bubblegum.jpg', 'Meatball Bubblegum');
+var chair = new Product ('chair.jpg', 'Discouraging Chair');
+var cthulhu = new Product ('cthulhu.jpg', 'Ia! Ia!');
+var dogduck = new Product ('dog-duck.jpg', 'Doggie Duck Beak');
+var dragon = new Product ('dragon.jpg', 'Dragon Meat');
+var pen = new Product ('pen.jpg', 'Eating U-pen-sils');
+var petsweep = new Product ('pet-sweep.jpg', 'Doggie Dust Boots');
+var scissors = new Product ('scissors.jpg', 'Pizza Scissors');
+var shark = new Product ('shark.jpg', 'Shark Sleeping Bag');
+var sweep = new Product ('sweep.png', 'Dust Mop Baby Romper');
+var tauntaun = new Product ('tauntaun.jpg', 'Tauntaun Sleeping Bag');
+var unicorn = new Product ('unicorn.jpg', 'Unicorn Meat');
+var usb = new Product ('usb.gif', 'Squirming USB Tentacle');
+var watercan = new Product ('water-can.jpg', 'Self Watering Can');
+var wineglass = new Product ('wine-glass.jpg', 'Spill-Proof Glass');
 
 //here is my listener//
 var startButton = document.getElementById('startButton');
 startButton.addEventListener('click', playGame);
 
 function clickyClick(event) {
-  if(totalClicks < 25) {
+  if(totalClicks < 24) {
     totalClicks += 1;
     if(event.target.id == 'left') {
       (products[displayedProducts[0]]).clicks++;
@@ -108,20 +109,99 @@ function clickyClick(event) {
     }
     displayProduct();
   }
-  else{
+  else if (totalClicks = 24) {
+    if(event.target.id == 'left') {
+      (products[displayedProducts[0]]).clicks++;
+    }
+    else if (event.target.id == 'center') {
+      (products[displayedProducts[1]]).clicks++;
+    }
+    else{
+      (products[displayedProducts[2]]).clicks++;
+    }
     startButton.removeEventListener('click', playGame);
     left.removeEventListener('click', clickyClick);
     center.removeEventListener('click', clickyClick);
     right.removeEventListener('click', clickyClick);
-    function makeList(){
-      var list = document.getElementById('product-clicks');
-      for(var i = 0; i < products.length; i++) {
-        var item = document.createElement('li');
-        item.textContent = 'The image ' + products[i].name + ' was selected ' + products[i].clicks + ' times.';
-        list.appendChild(item);
+    // function makeList(){
+    //   var list = document.getElementById('product-clicks');
+    //   for(var i = 0; i < products.length; i++) {
+    //     var item = document.createElement('li');
+    //     item.textContent = 'The image ' + products[i].name + ' was selected ' + products[i].clicks + ' times.';
+    //     list.appendChild(item);
+    //   }
+    // }
+    var chartColors = ['violet', 'purple'];
+    var chartLabels = [];
+    function makeChartLabels() {
+      for(var i = 0; i < products.length; i++){
+        chartLabels.push(products[i].nickname);
       }
     }
-    makeList();
+    makeChartLabels();
+    console.log(chartLabels);
+
+    var viewsData = [];
+    function makeViewsData(){
+      for(var i = 0; i < products.length; i++){
+        viewsData.push(products[i].views);
+      }
+    }
+    makeViewsData();
+    console.log(viewsData);
+
+    var clicksData = [];
+    function makeClicksData(){
+      for(var i = 0; i < products.length; i++) {
+        clicksData.push(products[i]['clicks']);
+      }
+    }
+    makeClicksData();
+    console.log(clicksData);
+    // makeList();
+    // makeChart();
+    //Getting the chart from HTML--I wanted to wrap this in a function, but every time I tried, I broke something.//
+    var context = document.getElementById('market-chart').getContext('2d');
+    //chart options--there are so many of these.
+    var chartOptions = {
+      scales: {
+        xAxes:[{
+          ticks: {
+            stacked: false,
+            autoskip: false,
+            minRotation: 90,
+            maxRotation: 90,
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            min: 0,
+            max: 10,
+            stepSize: 1
+          }
+        }]
+      }
+    };
+
+    var marketChart = new Chart(context, {//this is where we build out the chart//
+      type: 'bar',
+      data: {
+        labels: chartLabels,
+        datasets: [
+          {
+            label: 'Views',
+            data: viewsData,
+            backgroundColor: chartColors[1]
+          },
+          {
+            label: 'Clicks',
+            data: clicksData,
+            backgroundColor: chartColors[0]
+          }]
+      },
+      options: chartOptions
+    });
   }
 }
 function playGame(){
@@ -129,4 +209,21 @@ function playGame(){
   left.addEventListener('click', clickyClick);
   center.addEventListener('click', clickyClick);
   right.addEventListener('click', clickyClick);
+}
+
+//here are some chart variables//
+
+//the functions that make the chart variables//
+function makeChartVars() {
+  // function makeChartLabels(products){
+  //   for(var i = 0; i < products.length; i++) {
+  //     chartLabels.push(products[i]['nickname']);
+  //   }
+  // }
+  // function makeViewsData(){
+  //   for(var i = 0; i < products.length; i++) {
+  //     viewsData.push(products[i]['views']);
+  //   }
+  // }
+
 }
